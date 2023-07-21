@@ -1,0 +1,48 @@
+CREATE TABLE `mission`
+(
+    `mission_seq`  int         NOT NULL AUTO_INCREMENT COMMENT '미션 순번',
+    `mission_name` varchar(50) NOT NULL COMMENT '이름',
+    `period`       int                  DEFAULT NULL COMMENT '기간(일)',
+    `created_at`   timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`package_seq`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='미션';
+
+CREATE TABLE `day`
+(
+    `day_seq`        int         NOT NULL AUTO_INCREMENT COMMENT '일일미션 순번',
+    `mission_seq`     int         NOT NULL COMMENT '일일미션 순번',
+    `user_id`         varchar(20) NOT NULL COMMENT '사용자 ID',
+    `started_at`      timestamp   NOT NULL COMMENT '시작 일시',
+    `ended_at`        timestamp            NOT NULL COMMENT '종료 일시',
+    `created_at`      timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    PRIMARY KEY (`pass_seq`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='일일미션';
+
+CREATE TABLE `apply`
+(
+    `apply_seq`  int         NOT NULL AUTO_INCREMENT COMMENT '예약 순번',
+    `day_seq`     int         NOT NULL COMMENT '일일미션 순번',
+    `user_id`      varchar(20) NOT NULL COMMENT '사용자 ID',
+    `attended`     tinyint(1) NOT NULL DEFAULT '0' COMMENT '출석 여부',
+    `started_at`   timestamp   NOT NULL COMMENT '시작 일시',
+    `ended_at`     timestamp   NOT NULL COMMENT '종료 일시',
+    `cancelled_at` timestamp            DEFAULT NULL COMMENT '취소 일시',
+    PRIMARY KEY (`booking_seq`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='접수';
+
+
+
+CREATE TABLE `user` (
+                        `user_number` int NOT NULL COMMENT '회원번호',
+                        `user_id` varchar(45) COLLATE utf8mb4_bin NOT NULL COMMENT '회원ID',
+                        `password` varchar(45) COLLATE utf8mb4_bin NOT NULL COMMENT '패스워드',
+                        `name` varchar(45) COLLATE utf8mb4_bin NOT NULL COMMENT '이름',
+                        `district` varchar(45) COLLATE utf8mb4_bin NOT NULL COMMENT '지역구',
+                        `mileage` int NOT NULL COMMENT '마일리지',
+                        `num_meet_partic` int NOT NULL COMMENT '모임참여횟수',
+                        `num_dev_partic` int NOT NULL COMMENT '개발참여횟수',
+                        `envpercent` int NOT NULL COMMENT '개인환경보호효과',
+                        `meta` varchar(45) COLLATE utf8mb4_bin NOT NULL COMMENT '메타 정보, JSON',
+                        `created_at` timestamp NOT NULL COMMENT '생성일시\n',
+                        PRIMARY KEY (`user_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='사용자';
