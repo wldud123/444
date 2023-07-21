@@ -10,7 +10,7 @@ CREATE TABLE `mission`
 CREATE TABLE `day`
 (
     `day_seq`        int         NOT NULL AUTO_INCREMENT COMMENT '일일미션 순번',
-    `mission_seq`     int         NOT NULL COMMENT '일일미션 순번',
+    `mission_seq`     int         NOT NULL COMMENT '미션 순번',
     `user_id`         varchar(20) NOT NULL COMMENT '사용자 ID',
     `started_at`      timestamp   NOT NULL COMMENT '시작 일시',
     `ended_at`        timestamp            NOT NULL COMMENT '종료 일시',
@@ -20,7 +20,7 @@ CREATE TABLE `day`
 
 CREATE TABLE `apply`
 (
-    `apply_seq`  int         NOT NULL AUTO_INCREMENT COMMENT '예약 순번',
+    `apply_seq`  int         NOT NULL AUTO_INCREMENT COMMENT '접수 순번',
     `day_seq`     int         NOT NULL COMMENT '일일미션 순번',
     `user_id`      varchar(20) NOT NULL COMMENT '사용자 ID',
     `attended`     tinyint(1) NOT NULL DEFAULT '0' COMMENT '출석 여부',
