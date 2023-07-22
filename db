@@ -3,7 +3,6 @@ CREATE TABLE `mission`
     `mission_seq`  int         NOT NULL AUTO_INCREMENT COMMENT '미션 순번',
     `mission_name` varchar(50) NOT NULL COMMENT '이름',
     `period`       int                  DEFAULT NULL COMMENT '기간(일)',
-    `created_at`   timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`package_seq`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='미션';
 
@@ -14,7 +13,6 @@ CREATE TABLE `day`
     `user_id`         varchar(20) NOT NULL COMMENT '사용자 ID',
     `started_at`      timestamp   NOT NULL COMMENT '시작 일시',
     `ended_at`        timestamp            NOT NULL COMMENT '종료 일시',
-    `created_at`      timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     PRIMARY KEY (`pass_seq`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='일일미션';
 
